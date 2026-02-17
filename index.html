@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pare de Procrastinar | Cronograma de Estudos Inteligente</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 70px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 .highlight {
+            color: #fbbf24;
+        }
+
+        .hero .subheadline {
+            font-size: 26px;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 60px;
+            font-weight: 900;
+            color: #fbbf24;
+            display: block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            font-size: 15px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            display: block;
+            margin-top: -6px;
+        }
+
+        .problem-section {
+            background: #EEF5FF;
+            border-left: 8px solid #3b82f6;
+            padding: 50px;
+            margin: 50px auto;
+            max-width: 1000px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.18);
+        }
+
+        .problem-section h2 {
+            font-size: 32px;
+            color: #1e40af;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .problem-section p {
+            font-size: 20px;
+            color: #1e3a8a;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .problem-section strong {
+            color: #1e40af;
+            font-weight: 700;
+        }
+
+        .pain-points {
+            background: white;
+            padding: 45px 20px;
+        }
+
+        .section-cta {
+            display: inline-block;
+            margin: 0 auto 18px;
+            padding: 16px 34px;
+            background: #fbbf24;
+            color: #1a202c;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: 12px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(251, 191, 36, 0.55);
+        }
+
+        .section-cta.section-cta-bottom {
+            margin: 22px auto 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+
+        .science-section .section-title {
+            font-size: 42px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #718096;
+            margin-bottom: 18px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .pain-card {
+            background: white;
+            padding: 22px 20px;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            border-left: 6px solid #1e40af;
+            transition: all 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+        }
+
+        .pain-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        .pain-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #1a202c;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .pain-card p {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .solution-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            color: white;
+            padding: 70px 20px 45px;
+            text-align: center;
+        }
+
+        .solution-section h2 {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 22px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .solution-section .lead {
+            font-size: 22px;
+            margin-bottom: 28px;
+            opacity: 0.95;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 22px 20px;
+            border-radius: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #fbbf24;
+        }
+
+        .feature-number {
+            font-size: 30px;
+            font-weight: 900;
+            color: #fbbf24;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 19px;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            opacity: 0.95;
+            line-height: 1.55;
+        }
+
+        .science-section {
+            background: white;
+            padding: 45px 20px 70px;
+        }
+
+        .science-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 4px solid #3b82f6;
+            padding: 50px;
+            border-radius: 24px;
+            margin-bottom: 35px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            word-break: break-word;
+        }
+
+        .science-box h3 {
+            font-size: 32px;
+            color: #1e40af;
+            margin-bottom: 18px;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .science-box p {
+            font-size: 18px;
+            color: #1e3a8a;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .science-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 18px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .science-stat {
+            text-align: center;
+            padding: 26px 22px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .science-stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .science-stat-number {
+            font-size: 52px;
+            font-weight: 900;
+            color: #3b82f6;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .science-stat-label {
+            font-size: 15px;
+            color: #4a5568;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .testimonials-section {
+            background: #f7fafc;
+            padding: 65px 20px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 30px auto 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 26px 24px;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            border-top: 4px solid #3b82f6;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #2d3748;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        .testimonial-info h4 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1a202c;
+        }
+
+        .testimonial-info p {
+            font-size: 13px;
+            color: #718096;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 38px 20px 25px;
+            text-align: center;
+        }
+
+        .price-container {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 45px;
+            border-radius: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .price-label {
+            font-size: 20px;
+            margin-bottom: 8px;
+            opacity: 0.95;
+        }
+
+        .price-original {
+            font-size: 28px;
+            text-decoration: line-through;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+
+        .price-current {
+            font-size: 48px;
+            font-weight: 900;
+            color: #fbbf24;
+            margin-bottom: 0;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .price-prefix {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 800;
+            color: #fbbf24;
+            white-space: nowrap;
+        }
+
+        .price-installment {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+
+        .price-line {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .price-break {
+            flex-basis: 100%;
+            height: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 28px 70px;
+            background: #fbbf24;
+            color: #1a202c;
+            font-size: 26px;
+            font-weight: 900;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 15px 50px rgba(251, 191, 36, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(251, 191, 36, 0.6);
+        }
+
+        .guarantee {
+            margin-top: 16px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guarantee h4 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .guarantee p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .faq-section {
+            padding: 28px 20px 60px;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .faq-item {
+            background: #f7fafc;
+            padding: 0;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 28px 35px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a202c;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: "+";
+            font-size: 24px;
+            font-weight: 900;
+            color: #3b82f6;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            content: "−";
+        }
+
+        .faq-answer {
+            font-size: 18px;
+            color: #4a5568;
+            line-height: 1.8;
+            padding: 0 35px 28px;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.75;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subheadline {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .science-section .section-title {
+                font-size: 30px;
+            }
+
+            .price-current {
+                font-size: 40px;
+            }
+
+            .cta-button {
+                padding: 22px 45px;
+                font-size: 20px;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 48px;
+            }
+
+            .problem-section {
+                padding: 35px;
+            }
+
+            .science-box {
+                padding: 30px;
+                margin-bottom: 40px;
+            }
+
+            .science-box h3 {
+                font-size: 24px;
+                margin-bottom: 18px;
+            }
+
+            .science-box p {
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+
+            .science-stats {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 14px;
+                margin-top: 22px;
+            }
+
+            .science-stat {
+                padding: 20px 18px;
+            }
+
+            .science-stat-number {
+                font-size: 44px;
+            }
+
+            .science-stat-label {
+                font-size: 14px;
+            }
+
+            .testimonials-section {
+                padding: 70px 20px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 16px;
+                margin-top: 35px;
+            }
+
+            .testimonial-card {
+                padding: 22px 20px;
+            }
+
+            .testimonial-text {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Você gasta <span class="highlight">30 minutos</span> TODO DIA<br>decidindo o que estudar?</h1>
+            <p class="subheadline">É hora de parar de procrastinar e começar a estudar com método científico</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">80%</span>
+                    <span class="stat-label">dos brasileiros procrastinam</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">esquecem em 48 horas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM AGITATION -->
+    <div class="container">
+        <div class="problem-section">
+            <h2>🚨 Se isso descreve o seu dia, você PRECISA ler até o final:</h2>
+            <p><strong>Todo dia é a mesma luta...</strong></p>
+            <p>Você acorda com aquela vontade de estudar. Senta na cadeira. Abre o material. Mas aí vem aquela pergunta paralisante: <strong>"Por onde eu começo hoje?"</strong></p>
+            <p>Será que estuda Matemática? Ou será que foca em alguma que não reviso faz tempo? E aquele conteúdo que sempre cai?</p>
+            <p>Aí você abre o Instagram "só pra dar uma olhada rápida". 15 minutos depois, ainda tá rolando o feed. Mais 10 minutos olhando o plano de estudos de outras pessoas. Mais 5 decidindo por onde começar.</p>
+            <p><strong>Quando você percebe, já se foi meia hora... e você não estudou NADA.</strong></p>
+            <p>A culpa aperta. A ansiedade explode. E vem aquela voz na sua cabeça: <em>"Enquanto você tá enrolando, tem gente estudando. Você tá ficando pra trás."</em></p>
+        </div>
+    </div>
+
+    <!-- PAIN POINTS -->
+    <section class="pain-points">
+        <div class="container">
+            <a href="#" class="section-cta">Quero meu cronograma agora</a>
+            <h2 class="section-title">E o pior: você não está sozinho</h2>
+            <p class="section-subtitle">Pesquisas mostram que 80% dos estudantes brasileiros sofrem com os mesmos problemas</p>
+
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <span class="pain-icon">🧭</span>
+                    <h3>Paralisia de Decisão</h3>
+                    <p>Você tem TODO o conteúdo, mas não sabe por onde começar. Gasta 30-40 minutos só decidindo o que estudar e quando percebe, desperdiçou o horário mais produtivo do dia.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">🧠</span>
+                    <h3>Esquecimento Rápido</h3>
+                    <p>Você estuda hoje, mas sem revisar no timing certo, vai esquecer 70% em 48 horas. Na hora da prova, parece que nunca estudou aquilo.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">🧩</span>
+                    <h3>Ansiedade Constante</h3>
+                    <p>Aquela sensação de estar sempre atrasado. "Será que estou estudando certo? Será que estou priorizando as matérias certas?" A dúvida corrói por dentro.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">⏰</span>
+                    <h3>Procrastinação</h3>
+                    <p>Você sabe que precisa estudar, mas sem um plano claro, é fácil adiar. "Vou começar depois do almoço" vira rotina. E os dias passam sem progresso real.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">📚</span>
+                    <h3>Desorganização Crônica</h3>
+                    <p>Você tem material DEMAIS e não sabe como encaixar tudo. Fica pulando de matéria em matéria sem método, sem profundidade, sem fixação real.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">🎯</span>
+                    <h3>Culpa e Frustração</h3>
+                    <p>Você estuda, mas não vê progresso. Faz questões e erra as mesmas coisas. Parece que o esforço não está valendo a pena. O desânimo toma conta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="solution-section">
+        <div class="container">
+            <h2>Acabou! Chega de Sofrer!</h2>
+            <p class="lead">O sistema que elimina 100% dessas dores em apenas<br>1 minuto por dia</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-number">01</span>
+                    <h3>Zero Decisões</h3>
+                    <p>Todo dia você abre o cronograma e ele te diz: "Hoje você revisa estudo uma materia nova e História". Pronto. Acabou a paralisia. Você só senta e estuda.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number">02</span>
+                    <h3>Revisão Automática</h3>
+                    <p>O sistema usa neurociência para calcular QUANDO revisar cada matéria. Você nunca mais esquece o que estudou.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number">03</span>
+                    <h3>Personalizado</h3>
+                    <p>Matérias difíceis voltam mais rápido. Matérias que você domina aparecem menos. O cronograma se adapta ao SEU desempenho.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number">04</span>
+                    <h3>Paz Mental</h3>
+                    <p>Acabou a ansiedade de "será que estou fazendo certo?". Você SABE que está no caminho certo. Você TEM um sistema.CRONOGRAMA personalizado a seguir</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number">05</span>
+                    <h3>Mais Tempo Livre</h3>
+                    <p>Você vai estudar menos horas, mas com muito mais eficiência. Sobra tempo para descansar, fazer exercício, ter vida social.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-number">06</span>
+                    <h3>Resultado Real</h3>
+                    <p>Você vai fazer a prova com confiança, lembrando do que estudou meses atrás. Não é sorte. É método científico.</p>
+                </div>
+            </div>
+            <a href="#" class="section-cta section-cta-bottom">Quero meu cronograma agora</a>
+        </div>
+    </section>
+
+    <!-- SCIENCE PROOF -->
+    <section class="science-section">
+        <div class="container">
+            <h2 class="section-title">Isso não é "achismo"!<br>É Neurociência Comprovada!</h2>
+            
+            <div class="science-box">
+                <h3>🧠 A Curva do Esquecimento de Ebbinghaus</h3>
+                <p>Em 1885, o psicólogo Hermann Ebbinghaus descobriu algo revolucionário:</p>
+                <p><strong>Sem revisão programada, você esquece 70% do que estudou em apenas 48 horas.</strong></p>
+                <p>MAS, com revisão espaçada — revisando o conteúdo nos intervalos calculados cientificamente — sua retenção salta para 85-90%.</p>
+                <p>Universidades como Harvard, Stanford e MIT recomendam essa técnica. Não por opinião. Por dados científicos sólidos.</p>
+            </div>
+
+            <div class="science-stats">
+                <div class="science-stat">
+                    <span class="science-stat-number">70%</span>
+                    <span class="science-stat-label">Esquecido em 48h<br><strong>(sem revisão)</strong></span>
+                </div>
+
+                <div class="science-stat">
+                    <span class="science-stat-number">90%</span>
+                    <span class="science-stat-label">Retido na memória<br><strong>(com revisão espaçada)</strong></span>
+                </div>
+
+                <div class="science-stat">
+                    <span class="science-stat-number">3x</span>
+                    <span class="science-stat-label">Mais eficiência<br>nos seus estudos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">O que dizem quem usa</h2>
+            <p class="section-subtitle">Estudantes que pararam de procrastinar e começaram a ter resultados reais</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Antes eu perdia 1 hora por dia só decidindo o que estudar. Com o cronograma, abro o app e já sei. Minha produtividade triplicou. Passei no ENEM com 780 pontos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AR</div>
+                        <div class="testimonial-info">
+                            <h4>Ana Rodrigues</h4>
+                            <p>Aprovada Engenharia - USP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Minha maior dor era esquecer tudo. Estudava mas não fixava. A revisão espaçada automática mudou meu jogo. Fui de 50% de acerto pra 82% em simulados."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LC</div>
+                        <div class="testimonial-info">
+                            <h4>Lucas Costa</h4>
+                            <p>Aprovado Concurso Bombeiros</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A ansiedade era absurda. Acordava com aperto no peito de 'será que tô fazendo certo?'. Ter um sistema científico acabou com isso. Passei em Medicina de primeira."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JF</div>
+                        <div class="testimonial-info">
+                            <h4>Júlia Fernandes</h4>
+                            <p>Aprovada Medicina - UFMG</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Estudava 10h sem método. Cansava, não fixava, reprovava. Com cronograma personalizado, estudei 6h por dia e passei em 2° lugar no concurso. Eficiência > Volume."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RA</div>
+                        <div class="testimonial-info">
+                            <h4>Rafael Almeida</h4>
+                            <p>Aprovado em 5 concursos públicos - técnico de enfermagem</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Depois de 3 semestres com notas baixas na faculdade, entendi: não era burrice, era falta de SISTEMA. O cronograma me deu o método. Saí de 6.5 pra 9.2 de média."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CS</div>
+                        <div class="testimonial-info">
+                            <h4>Carolina Silva</h4>
+                            <p>Engenharia Civil - 5° semestre</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A melhor parte? Não é só organização. É ter PAZ MENTAL. Saber que não tô perdido, que tenho um plano científico, que cada dia vale. Isso muda TUDO."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DP</div>
+                        <div class="testimonial-info">
+                            <h4>Diego Pinto</h4>
+                            <p>Aprovado OAB - 1ª fase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin-bottom: 24px;">Pare de sofrer!<br>Comece hoje!</h2>
+
+            <div class="price-container">
+                <p class="price-label">Sua aprovação vale mais que</p>
+                <div class="price-line">
+                    <span class="price-prefix">12x de</span>
+                    <span class="price-break"></span>
+                    <span class="price-current">R$ 9,30</span>
+                </div>
+                <p class="price-installment">ou R$ 89,90</p>
+            </div>
+
+            <a href="#" class="cta-button">
+                Quero Parar de Procrastinar Agora
+            </a>
+
+            <div class="guarantee">
+                <h4>🛡️ Garantia Incondicional de 7 Dias</h4>
+                <p>Se o cronograma não acabar com sua procrastinação e ansiedade, devolvemos 100% do seu dinheiro. Sem perguntas. Sem burocracia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary>Como funciona exatamente?</summary>
+                    <div class="faq-answer">Você responde um questionário inicial sobre quais matérias domina e quais tem dificuldade. O sistema monta um calendário personalizado dizendo qual matéria revisar cada dia, usando revisão espaçada (ciência comprovada). Todo dia você abre, vê o que estudar, e pronto.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Funciona para ENEM, concursos, faculdade e vestibulares?</summary>
+                    <div class="faq-answer">SIM! O cronograma é universal. Funciona para ENEM, vestibulares, concursos públicos, OAB, provas de residência médica, e até para estudantes de faculdade que querem melhorar as notas. Você adapta as matérias ao que precisa.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Quanto tempo por dia preciso dedicar?</summary>
+                    <div class="faq-answer">O cronograma se adapta ao SEU tempo. Se você tem 3h por dia, ele organiza. Se tem 8h, também. O importante não é quantidade, é consistência e método científico.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>E se eu perder um dia?</summary>
+                    <div class="faq-answer">Sem problema! O sistema reajusta automaticamente. Ele entende que você tem vida, imprevistos, compromissos. Não é uma prisão, é uma ferramenta que trabalha COM você.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Preciso de material específico?</summary>
+                    <div class="faq-answer">NÃO! O cronograma funciona com QUALQUER material (apostilas, vídeos, livros, PDFs, questões). Ele só organiza QUANDO revisar cada matéria. Você escolhe COMO estudar.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>E a garantia, como funciona?</summary>
+                    <div class="faq-answer">Simples: teste por 7 dias. Se não reduzir sua procrastinação e ansiedade, envie um email e devolvemos 100%. Sem perguntas, sem complicação.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cronograma Inteligente. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
